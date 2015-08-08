@@ -1,2 +1,2 @@
 # picodico
-Dictionary Base on Picture
+Dictionary Based on Picture
