@@ -1,24 +1,7 @@
 <div class="row">
     <div class="col-md-12">
-        <h1>PicoDico</h1>
+        <h1><a href="http://picodico.com" >PicoDico</a></h1>
         <h2 class="subtitle">Open Source Online Dictionary Based On Pictures</h2>
-        <form action="?" method="get" class="form-horizontal">
-
-            <div class="form-group form-group-lg">
-
-                <div class="col-sm-10">
-                    <input class="form-control input-lg " autocomplete="off" type="text"
-                           name="q" placeholder="Enter your word, like book, fish, sea..."
-                           {if (isset($smarty.get.q))}value="{$smarty.get.q}"{/if}
-                            >
-                </div>
-                <div class="col-sm-2">
-                    <button type="submit" class="btn input-lg btn-theme"> Search <i class="fa fa-search"></i></button>
-                </div>
-            </div>
-
-
-        </form>
         <div class="row sample" >
             <div class="col-md-12" >
                 Sample:
@@ -38,6 +21,25 @@
             </div>
 
         </div>
+
+        <form action="?" method="get" class="form-horizontal">
+
+            <div class="form-group form-group-lg">
+
+                <div class="col-sm-10">
+                    <input class="form-control input-lg "  autocomplete="off" type="text"
+                           name="q" placeholder="Enter your word, like book, fish, sea..."
+                           {if (isset($smarty.get.q))}value="{$smarty.get.q}"{/if}
+                            >
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn input-lg btn-theme"> Search <i class="fa fa-search"></i></button>
+                </div>
+            </div>
+
+
+        </form>
+
         <div class="row sample" >
             <div class="col-md-12" >
                 Recent Search:
