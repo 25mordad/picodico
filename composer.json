@@ -1,0 +1,26 @@
+{
+    "name": "25mordad/picodico",
+    "description": "Online Dictionary Base On Pictures",
+    "keywords": [
+        "dictionary",
+        "smart",
+        "picture"
+    ],
+    "homepage": "https://github.com/25mordad/picodico",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bahman R",
+            "email": "25Mordad@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/25mordad/picodico/issues",
+        "source": "https://github.com/25mordad/picodico"
+    },
+    "require": {
+        "smarty/smarty": "~3.1",
+        "joshcam/mysqli-database-class": "dev-master"
+    }
+}
