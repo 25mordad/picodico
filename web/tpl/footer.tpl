@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-lg-offset-5">
-                <p class="copyright"> 	&copy;  2015 <a href="http://picodico.com" >PicoDico</a> <small>Version Beta</small></p>
+                <p class="copyright"> 	&copy;  2015 <a href="http://picodico.com" >PicoDico</a> <small>Version 0.0.1</small></p>
             </div>
         </div>
     </div>
