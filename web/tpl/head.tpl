@@ -60,6 +60,7 @@
                 link.href="javascript:imageSearch.gotoPage("+i+");";
                 link.innerHTML = page.label;
                 link.style.marginRight = '2px';
+                link.setAttribute("class", "nextPage");
                 pagesDiv.appendChild(link);
             }
         }
