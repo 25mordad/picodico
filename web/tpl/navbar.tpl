@@ -11,8 +11,9 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="?page=Developers">Developers</a></li>
                 <li><a href="?page=WhatIsPicoDico">What Is PicoDico?</a></li>
+                <li><a href="?page=Developers">Developers</a></li>
+                <li><a href="?page=Statistics">Statistics</a></li>
                 <li><a href="?page=Donate">Donate</a></li>
                 <li><a href="https://github.com/25mordad/picodico" target="_blank"><i class="fa fa-github"></i> <small>github</small></a></li>
             </ul>

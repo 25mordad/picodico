@@ -32,12 +32,24 @@ require 'files/getPicture.php';
 if (isset($_GET['ok']))
     require 'files/okPicture.php';
 
-//find recent
+//find popular
 $db->groupBy ("word");
-$db->orderBy("id","DESC");
-$pdTemp->assign('recentSearch', $db->get('words', 15));
+$db->orderBy("cnt","DESC");
+$pdTemp->assign('popularSearch', $db->get('words', 15 , Array ( "word", "count(*) as cnt" )));
+
+//If page eq Statistics
+if (isset($_GET['page']) and $_GET['page'] == "Statistics")
+{
+    //find recent
+        $db->groupBy ("word");
+        $db->orderBy("id","DESC");
+        $pdTemp->assign('recentSearch', $db->get('words', 50));
+}
+
 
 //insert to DB
 if (isset($_GET['q']))
     require 'files/search.php';
+
+//Display temp
 $pdTemp->display('index.tpl');

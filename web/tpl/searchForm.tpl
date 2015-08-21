@@ -42,8 +42,8 @@
 
         <div class="row sample" >
             <div class="col-md-12" >
-                Recent Search:
-                {foreach $recentSearch as $row}
+                Popular Search:
+                {foreach $popularSearch as $row}
                     <a href="?q={$row['word']}" >{$row['word']}</a>{if !$row@last},{/if}
                 {/foreach}
 

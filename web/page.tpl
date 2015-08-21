@@ -8,7 +8,11 @@
             {if $smarty.get.page eq "Donate"}
                 {include file="tpl/page/donate.tpl"}
             {else}
-                {include file="tpl/page/whatIsPicoDico.tpl"}
+                {if $smarty.get.page eq "Statistics"}
+                    {include file="tpl/page/statistics.tpl"}
+                {else}
+                    {include file="tpl/page/whatIsPicoDico.tpl"}
+                {/if}
             {/if}
         {/if}
     {/if}
