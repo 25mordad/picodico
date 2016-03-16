@@ -8,3 +8,13 @@
     </p>
 
 </div>
+<div class="row sample" >
+	<div class="col-md-12" >
+		Popular Search:
+		{foreach $popularSearch as $row}
+			<a href="?q={$row['word']}" >{$row['word']}</a>{if !$row@last},{/if}
+		{/foreach}
+
+	</div>
+
+</div>

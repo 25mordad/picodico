@@ -2,11 +2,13 @@
     <div class="row pageResult scroll"  >
 
         <h4>Approved by users:</h4><br>
-        
         {if isset($picodicoResults)}
-            
-            
-        {foreach $tt as $result}
+            <script>
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
+            </script>
+        {foreach $picodicoResults as $result}
             <div class="showPic" >
                 <a class="gray" href="{$result['picUrl']}" target="_blank" >
                     <i class="fa fa-link"
@@ -27,37 +29,11 @@
         {/if}
         <div class="clearfix" ></div>
         <hr>
-        <h4>Founded on the web:</h4><br>
-        <div class="row" >
-			<div class="col-md-4" >
-				<h3>Google:</h3>
-				{foreach $googleImages as $result}
-				<div class="col-md-6" >
-					<img src="{$result}" class="img-responsive" >
-				</div>
-				{/foreach}
-				<div class="clearfix" ></div>
-			</div>
-			<div class="col-md-4" >
-				<h3>Yahoo:</h3>
-				{foreach $yahooImages as $result}
-				<div class="col-md-6" >
-					<img src="{$result}" class="img-responsive" >
-				</div>
-				{/foreach}
-				<div class="clearfix" ></div>
-			</div>
-			<div class="col-md-4" >
-				<h3>Bing:</h3>
-				{foreach $bingImages as $result}
-				<div class="col-md-6" >
-					<img src="{$result}" class="img-responsive" >
-				</div>
-				{/foreach}
-				<div class="clearfix" ></div>
-			</div>
-        </div>
-        
+        <h4>Found on the web:</h4><br>
+        <div id="content">Loading...</div>
+        <div class="clearfix" ></div>
+        <div id="branding" ></div>
+
     </div>
 
 

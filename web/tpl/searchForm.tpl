@@ -6,6 +6,7 @@
             <div class="col-md-12" >
                 Sample:
                 <a href="?q=fish" >fish</a>,
+                <a href="?q=pescado" >pescado</a>,
                 <a href="?q=ماهی">ماهی</a>,
                 <a href="?q=鱼" >鱼</a>,
                 <a href="?q=poisson" >poisson</a>,
@@ -16,8 +17,8 @@
                 <a href="?q=рыба" >рыба</a>,
                 <a href="?q=물고기" >물고기</a>,
                 <a href="?q=مچھلی" >مچھلی</a>,
-                <a href="?q=balık" >balık</a>,
-                <a href="?q=pescado" >pescado</a>
+                <a href="?q=balık" >balık</a>
+                
             </div>
 
         </div>
@@ -40,16 +41,7 @@
 
         </form>
 
-        <div class="row sample" >
-            <div class="col-md-12" >
-                Popular Search:
-                {foreach $popularSearch as $row}
-                    <a href="?q={$row['word']}" >{$row['word']}</a>{if !$row@last},{/if}
-                {/foreach}
-
-            </div>
-
-        </div>
+        
     </div>
 
 </div>
