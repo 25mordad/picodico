@@ -8,7 +8,7 @@
  *
  * @link https://github.com/25mordad/picodico
  * @copyright 2015 25Mordad
- * @author Bahman R <25Mordad at gmail dot com> <++98 912 552 1340 >
+ * @author Bahman R <25Mordad at gmail dot com> <++34 684 05 3215 >
  * @version Beta (This is the version of PicoDico)
  *
  *
@@ -17,7 +17,7 @@
 //Now start the code ;)
 session_start();
 require 'files/require.php';
-
+require 'files/functions.php';
 //find Message
 if (isset($_SESSION['resultMessage']))
 {
@@ -51,40 +51,17 @@ if (isset($_GET['page']) and $_GET['page'] == "Statistics")
 //if q
 if (isset($_GET['q']))
 {
-	$clearText = $_GET['q']; //trim(preg_replace('/ +/', ' ', preg_replace('/[^A-Za-z0-9 ]/', ' ', urldecode(html_entity_decode(strip_tags($_GET['q']))))));
-	require 'files/search.php';
-	require 'files/simple_html_dom.php';
+	//$srng = explode(" ", trim($_GET['q']));
+	$clearText = trim($_GET['q']); 
+	if (!isInOurDB($db,$clearText)){
+		require 'files/analyseWord.php';
+		require 'files/simple_html_dom.php';
+		require 'files/crawler.php';
+	}
 	
-	//google
-	$googleHtml = file_get_html("https://www.google.com/search?q=$clearText&tbm=isch");
-	foreach($googleHtml->find('img') as $gi)
-       $googleImages[] = $gi->src  ;
-	$pdTemp->assign('googleImages', $googleImages);
-	
-	//yahoo
-	$yahooHtml = file_get_html("https://images.search.yahoo.com/search/images?p=$clearText");
-	$i=0;
-	foreach($yahooHtml->find('img') as $yi)
-	{
-		if ($i % 2 == 0 && $i < 40 && $i > 0 )
-			$yahooImages[] = $yi->src  ;
-		$i ++;
-	}   
-	$pdTemp->assign('yahooImages', $yahooImages);
-	
-	//bing
-	$bingHtml = file_get_html("http://www.bing.com/images/search?q=$clearText");
-	$i=0;
-	foreach($bingHtml->find('img') as $bi)
-	{
-		if ($i >0 && $i < 21)
-			$bingImages[] = $bi->src  ;
-		$i ++;
-	} 
-	
-       
-	$pdTemp->assign('bingImages', $bingImages);
-	
+	$db->join("pictures p", "p.id_word=w.id", "LEFT");
+	$db->where("w.word", $clearText);
+	$pdTemp->assign('pictures', $db->get ("words w"));
 	
 }
 

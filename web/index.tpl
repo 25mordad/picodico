@@ -18,5 +18,6 @@
     </div>
 </div>
     {include file="tpl/footer.tpl"}
+     <script src="web/assets/js/production.min.js"></script>
 </body>
 </html>
