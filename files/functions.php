@@ -25,3 +25,13 @@ function isInOurDB($db,$wd){
 		return false;
 	}
 }
+
+//
+function distinctWords($db){
+	return $db->rawQuery('SELECT DISTINCT translation FROM words');
+}
+
+//
+function findPix($db,$wd){
+	return $db->rawQuery("SELECT * FROM `pictures` where id_word IN (SELECT id FROM `words` where translation=? )",Array($wd));
+}

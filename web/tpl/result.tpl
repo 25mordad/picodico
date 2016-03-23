@@ -1,23 +1,17 @@
 {if (isset($smarty.get.q))}
     <div class="row pageResult scroll"  >
+		<div >
+		<h3>Autodetection language: <b>{$pictures[0]['language']}</b>  | {$smarty.get.q}: <b>{$pictures[0]['translation']}</b></h3>
+		</div>
         <div class="row" >
 			{foreach $pictures as $row}
 			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 				<div class="hovereffect">
-					<img src="{$row['url']}" class="img-responsive" >
+					<img src="{$row['url']}" class="img-responsive" width="200" >
 					<div class="overlay">
-						<h2>Effect 10</h2>
-						<p class="icon-links">
-							<a href="#">
-								<span class="fa fa-twitter"></span>
-							</a>
-							<a href="#">
-								<span class="fa fa-facebook"></span>
-							</a>
-							<a href="#">
-								<span class="fa fa-instagram"></span>
-							</a>
-						</p>
+					   <a class="info" href="?q={$smarty.get.q}&approve={$row['id']}&r=t"><i class="fa fa-check"></i></a>
+					   <a class="info not" href="?q={$smarty.get.q}&approve={$row['id']}&r=f"><i class="fa fa-times"></i></a>
+					   <h2 >Is it appropriate?</h2>
 					</div>
 				</div>
 			</div>
@@ -28,124 +22,85 @@
     
 <style>
 .hovereffect {
-    width: 100%;
-    height: 100%;
-    float: left;
-    overflow: hidden;
-    position: relative;
-    text-align: center;
-    cursor: default;
+  width: 100%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  cursor: default;
 }
+
 .hovereffect .overlay {
-    width: 100%;
-    position: absolute;
-    overflow: hidden;
-    left: 0;
-	top: auto;
-	bottom: 0;
-	padding: 1em;
-	height: 4.75em;
-	background: #79FAC4;
-	color: #3c4a50;
-	-webkit-transition: -webkit-transform 0.35s;
-	transition: transform 0.35s;
-	-webkit-transform: translate3d(0,100%,0);
-	transform: translate3d(0,100%,0);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
 }
 
 .hovereffect img {
-    display: block;
-    position: relative;
-	-webkit-transition: -webkit-transform 0.35s;
-	transition: transform 0.35s;
+  display: block;
+  position: relative;
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
 }
 
 .hovereffect:hover img {
--webkit-transform: translate3d(0,-10%,0);
-	transform: translate3d(0,-10%,0);
+  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0" /><feGaussianBlur stdDeviation="3" /></filter></svg>#filter');
+  filter: grayscale(1) blur(3px);
+  -webkit-filter: grayscale(1) blur(3px);
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .hovereffect h2 {
-    text-transform: uppercase;
-    color: #fff;
-    text-align: center;
-    position: relative;
-    font-size: 17px;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.6);
-	float: left;
-	margin: 0px;
-	display: inline-block;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  font-size: 12px;
+  padding: 0px;
+  margin:0px;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .hovereffect a.info {
-    display: inline-block;
-    text-decoration: none;
-    padding: 7px 14px;
-    text-transform: uppercase;
-	color: #fff;
-	border: 1px solid #fff;
-	margin: 50px 0 0 0;
-	background-color: transparent;
+  display: inline-block;
+  text-decoration: none;
+  padding: 0px 5px 0px 5px;
+  border: 1px solid #ffffff;
+  margin: 5px auto;
+  background-color: green;
 }
+
+.hovereffect a.not {
+  background-color: red;
+}
+
 .hovereffect a.info:hover {
-    box-shadow: 0 0 5px #fff;
+  box-shadow: 0 0 5px #fff;
 }
 
-
-.hovereffect p.icon-links a {
-	float: right;
-	color: #3c4a50;
-	font-size: 1.4em;
+.hovereffect a.info, .hovereffect h2 {
+  -webkit-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  transform: scale(0.7);
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  color: #fff;
+  text-transform: uppercase;
 }
 
-.hovereffect:hover p.icon-links a:hover,
-.hovereffect:hover p.icon-links a:focus {
-	color: #252d31;
-}
-
-.hovereffect h2,
-.hovereffect p.icon-links a {
-	-webkit-transition: -webkit-transform 0.35s;
-	transition: transform 0.35s;
-	-webkit-transform: translate3d(0,200%,0);
-	transform: translate3d(0,200%,0);
-}
-
-.hovereffect p.icon-links a span:before {
-	display: inline-block;
-	padding: 8px 10px;
-	speak: none;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
-
-.hovereffect:hover .overlay,
-.hovereffect:hover h2,
-.hovereffect:hover p.icon-links a {
-	-webkit-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0);
-}
-
-.hovereffect:hover h2 {
-	-webkit-transition-delay: 0.05s;
-	transition-delay: 0.05s;
-}
-
-.hovereffect:hover p.icon-links a:nth-child(3) {
-	-webkit-transition-delay: 0.1s;
-	transition-delay: 0.1s;
-}
-
-.hovereffect:hover p.icon-links a:nth-child(2) {
-	-webkit-transition-delay: 0.15s;
-	transition-delay: 0.15s;
-}
-
-.hovereffect:hover p.icon-links a:first-child {
-	-webkit-transition-delay: 0.2s;
-	transition-delay: 0.2s;
+.hovereffect:hover a.info, .hovereffect:hover h2 {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
 }
 </style>
 

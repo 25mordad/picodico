@@ -19,18 +19,14 @@ session_start();
 require 'files/require.php';
 require 'files/functions.php';
 //find Message
-if (isset($_SESSION['resultMessage']))
-{
+if (isset($_SESSION['resultMessage'])){
     $pdTemp->assign('resultMessage', $_SESSION['resultMessage']);
     unset($_SESSION['resultMessage']);
 }
 
-//find picture
-//require 'files/getPicture.php';
-
 //find OK picture
-//if (isset($_GET['ok']))
-//    require 'files/okPicture.php';
+if (isset($_GET['approve']))
+    require 'files/approve.php';
 
 
 
@@ -49,8 +45,7 @@ if (isset($_GET['page']) and $_GET['page'] == "Statistics")
 
 
 //if q
-if (isset($_GET['q']))
-{
+if (isset($_GET['q'])){
 	//$srng = explode(" ", trim($_GET['q']));
 	$clearText = trim($_GET['q']); 
 	if (!isInOurDB($db,$clearText)){
@@ -65,5 +60,17 @@ if (isset($_GET['q']))
 	
 }
 
+//if q
+if (isset($_GET['search'])){
+	$pdTemp->assign('distinctWords', distinctWords($db));
+	
+	if (isset($_GET['word'])){
+		$pdTemp->assign('findPix', findPix($db,$_GET['word']));
+		if ($_GET['o'] == "a"){
+			
+		}
+	}
+		
+}
 //Display temp
 $pdTemp->display('index.tpl');
