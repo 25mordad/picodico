@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h1><a href="http://picodico.com" >PicoDico</a></h1>
+        <h1><a href="/" >PicoDico</a></h1>
         <h2 class="subtitle">Open Source Online Dictionary Based On Pictures</h2>
         <div class="row sample" >
             <div class="col-md-12" >

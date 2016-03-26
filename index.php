@@ -60,14 +60,25 @@ if (isset($_GET['q'])){
 	
 }
 
-//if q
+//if smart
 if (isset($_GET['search'])){
 	$pdTemp->assign('distinctWords', distinctWords($db));
 	
 	if (isset($_GET['word'])){
 		$pdTemp->assign('findPix', findPix($db,$_GET['word']));
 		if ($_GET['o'] == "a"){
-			
+			$pdTemp->assign('findPix', findPixOrderApp($db,$_GET['word']));
+			if (isset($_GET['disapprove'])){
+				$db->where ('id', $_GET['disapprove']);
+				$pic = $db->get ('approve');
+				$dataUpdate = Array (
+					"disapprove"     => ++$pic[0][disapprove]
+				);
+				$db->where ('id', $pic[0]['id']);
+				$db->update ('approve', $dataUpdate);
+				$_SESSION['resultMessage']="Thank you";
+				exit( header("location: ?search=smart&word=".$_GET['word']."&o=a") );
+			}
 		}
 	}
 		
