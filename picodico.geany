@@ -27,11 +27,8 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=3
-FILE_NAME_0=1379;HTML;0;EUTF-8;1;1;0;%2Fvar%2Fwww%2Fbobopd.com%2Fpicodico%2Fweb%2Ftpl%2Fsmart.tpl;0;4
-FILE_NAME_1=1609;PHP;0;EUTF-8;1;1;0;%2Fvar%2Fwww%2Fbobopd.com%2Fpicodico%2Ffiles%2Ffunctions.php;0;4
-FILE_NAME_2=793;PHP;0;EUTF-8;1;1;0;%2Fvar%2Fwww%2Fbobopd.com%2Fpicodico%2Findex.php;0;4
-FILE_NAME_3=533;PHP;0;EUTF-8;1;1;0;%2Fvar%2Fwww%2Fbobopd.com%2Fpicodico%2Ffiles%2Frequire.php;0;4
+current_page=0
+FILE_NAME_0=1424;None;0;EUTF-16BE;1;1;0;%2Fhome%2Fbobo%2FUPF%2FNaturalLanguageInteraction%2FProject%2FBOBO-Pizza%2Fdict%2Fclasses.dic;0;4
 
 [VTE]
 last_dir=/home/bobo

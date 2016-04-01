@@ -80,6 +80,11 @@ if (isset($_GET['search'])){
 				exit( header("location: ?search=smart&word=".$_GET['word']."&o=a") );
 			}
 		}
+		if ($_GET['o'] == "s"){
+			$db->orderBy("similarity","ASC");
+			$db->where("word", $_GET['word']);
+			$pdTemp->assign('findPix', $db->get ("similar"));
+		}
 	}
 		
 }

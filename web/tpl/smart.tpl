@@ -14,24 +14,44 @@
 				<hr>
 				
 				{if isset($findPix)}
-				<a href="?search=smart&word={$smarty.get.word}&o=a"> -- Order By Approve -- </a>
+				<a href="?search=smart&word={$smarty.get.word}&o=a"> -- Order By Approve -- </a> | 
+				<a href="?search=smart&word={$smarty.get.word}&o=s"> -- Order By Similarity -- </a>
 				
 				<br><br>
 				<div class="row" >
+					{if $smarty.get.o == "s"}
+					{if isset($findPix)}
+					
+						{foreach $findPix as $row}
+						
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							<div class="hovereffect">
+								<img src="{$row['similar']}" class="img-responsive" width="200" >
+								
+							</div>
+						</div>
+						
+						{/foreach}
+					
+					{/if}
+					{else}
 					{foreach $findPix as $row}
 					{if !isset($smarty.get.o)}
 					<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 						<img src="{$row['url']}" class="img-responsive" width="200" >
 					</div>
 					{else}
+					
 					<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 						<div class="hovereffect">
 							<img src="{$row['url']}" class="img-responsive" width="200" >
 							<div class="overlay">
-							   <a class="info not" href="?search=smart&word=fish&o=a&disapprove={$row['aprid']}"><i class="fa fa-check"></i></a>
-							   <h2 >Is it Wrong image? <br><br>
+								{$lng = {get_word id_word=$row['id_word']}}
+							   <a class="info not" href="?search=smart&word={$smarty.get.word}&o=a&disapprove={$row['aprid']}"><i class="fa fa-check"></i> Wrong image </a><br>
+							   <a class="info" href="similar.php?from=0&source={$row['url']}&word={$smarty.get.word}&language={$lng}" target="_blank" ><i class="fa fa-search-plus"></i> Find similar </a><br>
+							   <h2 ><br>
 								<p>
-									<b>Source: {$row['source']} | {$row['id_word']} {get_word id_word="90"}</b><br>
+									<b>Source: {$row['source']} | {$lng}</b><br><br>
 								</p>
 							   </h2>
 							   
@@ -39,9 +59,16 @@
 						</div>
 					</div>
 					{/if}
+					
 					{/foreach}
+					{/if}
 				</div>
 				{/if}
+				
+				
+				
+				
+				
             </div>
 
         </div>

@@ -58,6 +58,8 @@ function findPixOrderSim($db,$wd,$cc){
 function smarty_function_get_word($params, &$smarty)
 {
 	//$params['id_word']
-	
-	return $params['id_word'];
+	require 'db.php';
+	$db->where ("id", $params['id_word']);
+	$word = $db->getOne ("words");
+	return $word['language'];
 }

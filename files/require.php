@@ -20,6 +20,5 @@ $pdTemp->config_dir     ="html/configs/";
 $pdTemp->cache_dir      ="html/cache/";
 
 //initial DB
-$mysqli = new mysqli ('localhost', 'root', 'bobo', 'picodico');
-$db = new MysqliDb ($mysqli);
+require 'db.php';
 
