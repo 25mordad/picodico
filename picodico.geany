@@ -27,8 +27,7 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
-FILE_NAME_0=1424;None;0;EUTF-16BE;1;1;0;%2Fhome%2Fbobo%2FUPF%2FNaturalLanguageInteraction%2FProject%2FBOBO-Pizza%2Fdict%2Fclasses.dic;0;4
+current_page=-1
 
 [VTE]
 last_dir=/home/bobo

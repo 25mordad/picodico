@@ -25,8 +25,15 @@ if (isset($_SESSION['resultMessage'])){
 }
 
 //find OK picture
-if (isset($_GET['approve']))
-    require 'files/approve.php';
+if (isset($_GET['approve'])){
+	require 'files/approve.php';
+	$_SESSION['resultMessage']="Thank you";
+	if (isset($_GET['q']))
+		exit( header("location: ?q=".trim($_GET['q'])) );	
+	else
+		exit( header("location: ?search=smart&word=".trim($_GET['word'])) );
+}
+    
 
 
 
@@ -46,8 +53,8 @@ if (isset($_GET['page']) and $_GET['page'] == "Statistics")
 
 //if q
 if (isset($_GET['q'])){
-	//$srng = explode(" ", trim($_GET['q']));
-	$clearText = trim($_GET['q']); 
+	require 'files/validation.php';
+	
 	if (!isInOurDB($db,$clearText)){
 		require 'files/analyseWord.php';
 		require 'files/simple_html_dom.php';
@@ -56,8 +63,11 @@ if (isset($_GET['q'])){
 	
 	$db->join("pictures p", "p.id_word=w.id", "LEFT");
 	$db->where("w.word", $clearText);
-	$pdTemp->assign('pictures', $db->get ("words w"));
+	$pictures = $db->get ("words w");
+	$pdTemp->assign('pictures', $pictures);
 	
+	//chech +18
+	require 'files/dirtword.php';
 }
 
 //if smart
@@ -79,6 +89,7 @@ if (isset($_GET['search'])){
 				$_SESSION['resultMessage']="Thank you";
 				exit( header("location: ?search=smart&word=".$_GET['word']."&o=a") );
 			}
+			
 		}
 		if ($_GET['o'] == "s"){
 			$db->orderBy("similarity","ASC");

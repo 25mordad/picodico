@@ -13,8 +13,7 @@ $pic = $db->get ('approve');
 if (isset($pic[0][id]))
 {
 
-	if ( $_GET['r'] == "t" )
-	{
+	if ( $_GET['r'] == "t" ){
 		$dataUpdate = Array (
 			"approve"     => ++$pic[0][approve]
 		);
@@ -49,8 +48,7 @@ if (isset($pic[0][id]))
     $id = $db->insert ('approve', $data);
 }
 
-$_SESSION['resultMessage']="Thank you";
-exit( header("location: ?q=".trim($_GET['q'])) );	
+
 
 
 

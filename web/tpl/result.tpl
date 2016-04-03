@@ -1,9 +1,19 @@
 {if (isset($smarty.get.q))}
-    <div class="row pageResult scroll"  >
+	{if $dirtword and !$smarty.get.iAgree } 
+	<div >
+		
+		<img src="web/assets/img/adults.jpg" width="90" align="left" style="padding:10px" > 
+		<h3><a href="/" >I disagree</a></h3> 
+		<h6><a href="?q={$smarty.get.q}&iAgree=true" >I'm older than 18 and I agree</a></h6>
+		
+	</div>
+	{/if}
+    <div class="row pageResult scroll"  {if $dirtword and !$smarty.get.iAgree } style="display:none" {/if} >
 		<div >
 		<h3>Autodetection language: <b>{$pictures[0]['language']}</b>  | {$smarty.get.q}: <b>{$pictures[0]['translation']}</b></h3>
 		</div>
-        <div class="row" >
+		
+        <div class="row"  >
 			{foreach $pictures as $row}
 			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 				<div class="hovereffect">

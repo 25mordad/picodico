@@ -15,11 +15,12 @@
 				
 				{if isset($findPix)}
 				<a href="?search=smart&word={$smarty.get.word}&o=a"> -- Order By Approve -- </a> | 
-				<a href="?search=smart&word={$smarty.get.word}&o=s"> -- Order By Similarity -- </a>
+				{if $smarty.get.o == "a" and isset($findPix[0]['url'])}<a href="?search=smart&word={$smarty.get.word}&o=s&language={get_word id_word=$findPix[0]['id_word']}&source={$findPix[0]['url']}"> -- Order By Similarity -- </a>{/if}
 				
 				<br><br>
 				<div class="row" >
-					{if $smarty.get.o == "s"}
+					{if $smarty.get.o == "s" }
+					{if !isset($findPix[0]['similar'])}<a class="info" href="similar.php?from=0&source={$smarty.get.source}&word={$smarty.get.word}&language={$smarty.get.language}" target="_blank" ><i class="fa fa-search-plus"></i> Find similar </a><br>{/if}
 					{if isset($findPix)}
 					
 						{foreach $findPix as $row}
@@ -38,7 +39,21 @@
 					{foreach $findPix as $row}
 					{if !isset($smarty.get.o)}
 					<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-						<img src="{$row['url']}" class="img-responsive" width="200" >
+						<div class="hovereffect">
+							<img src="{$row['url']}" class="img-responsive" width="200" >
+							<div class="overlay">
+								{$lng = {get_word id_word=$row['id_word']}}
+							   <a class="info" href="?search=smart&word={$smarty.get.word}&approve={$row['id']}&r=t"><i class="fa fa-check"></i></a>
+							   <a class="info not" href="?search=smart&word={$smarty.get.word}&approve={$row['id']}&r=f"><i class="fa fa-times"></i></a>
+							   <h2 >
+								   Is it appropriate?
+							   <p>
+									<b>Source: {$row['source']} | {$lng}</b><br><br>
+								</p>
+							   </h2>
+							</div>
+							
+						</div>
 					</div>
 					{else}
 					
@@ -48,7 +63,6 @@
 							<div class="overlay">
 								{$lng = {get_word id_word=$row['id_word']}}
 							   <a class="info not" href="?search=smart&word={$smarty.get.word}&o=a&disapprove={$row['aprid']}"><i class="fa fa-check"></i> Wrong image </a><br>
-							   <a class="info" href="similar.php?from=0&source={$row['url']}&word={$smarty.get.word}&language={$lng}" target="_blank" ><i class="fa fa-search-plus"></i> Find similar </a><br>
 							   <h2 ><br>
 								<p>
 									<b>Source: {$row['source']} | {$lng}</b><br><br>
