@@ -99,5 +99,7 @@ if (isset($_GET['search'])){
 	}
 		
 }
+
+
 //Display temp
 $pdTemp->display('index.tpl');

@@ -63,3 +63,4 @@ function smarty_function_get_word($params, &$smarty)
 	$word = $db->getOne ("words");
 	return $word['language'];
 }
+
